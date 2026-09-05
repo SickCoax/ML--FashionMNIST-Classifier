@@ -1,2 +1,5 @@
 # Ignore CSV
 dataset/*.csv
+
+# Ignore ipynb checkpoint
+
