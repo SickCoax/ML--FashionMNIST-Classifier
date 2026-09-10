@@ -1,14 +1,10 @@
-from preprocessing import get_X_y
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader , TensorDataset
 
 
-def train_model(df_train , df_test) :
-
-    X_train , y_train = get_X_y(df_train)
-    X_test , y_test = get_X_y(df_test)
+def train_model(X_train , y_train) :
 
     X_train = torch.tensor(
         X_train.values ,
@@ -17,10 +13,6 @@ def train_model(df_train , df_test) :
     y_train = torch.tensor(
         y_train.values ,
         dtype = torch.long
-    )
-    X_test = torch.tensor(
-        X_test.values ,
-        dtype = torch.float32
     )
 
     train_dataset = TensorDataset(
@@ -98,4 +90,4 @@ def train_model(df_train , df_test) :
 
             optimizer.step()
 
-    return model , X_test , y_test
+    return model
